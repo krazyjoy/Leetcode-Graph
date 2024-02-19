@@ -18,6 +18,11 @@
         if first digit is not 1, change to 1
  */
 public class max_diff_from_changing_an_integer {
+    public static void main(String[] args) {
+        int num = 555;
+        System.out.println(maxDiff(num));
+        System.out.println(maxDiff(767));
+    }
     public static int maxDiff(int num){
         int max = findMax(num);
         int min = findMin(num);
@@ -49,7 +54,7 @@ public class max_diff_from_changing_an_integer {
         char highest_order = '0';
         char replace ='0';
         if(digits[0] == '1'){
-            for(int i=0; i<digits.length; i++){
+            for(int i=1; i<digits.length; i++){
                 if(digits[i] != '0' && digits[i] != '1'){
                     highest_order = digits[i];
                     replace = '0';

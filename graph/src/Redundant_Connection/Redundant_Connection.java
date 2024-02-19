@@ -51,13 +51,13 @@ public class Redundant_Connection {
 
     public static int[] findRedundantConnection_Union_Find(int[][] edges){
         int n = edges.length;
-        union_find uf = new union_find(n+1);
+        union_find uf = new union_find(n+1); // starts from 1
 
         int[] redundantEdge = new int[2];
         for(int[] edge: edges){
             int u = edge[0];
             int v = edge[1];
-            if(uf.find(u) == uf.find(v)){
+            if(uf.find(u) == uf.find(v)){ // if already belong to same union, this new edge is redundant
                 redundantEdge[0] = u;
                 redundantEdge[1] = v;
             }
