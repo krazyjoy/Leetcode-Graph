@@ -20,6 +20,7 @@ public class longest_substring_without_repeated_chars {
     public static void main(String[] args) {
         String s = "abcabcbb";
         System.out.println(lengthOfLongestSubstring(s));
+        System.out.println(getLongestSubString("bcbdbdbbdcdabd'", 2));
         String s2 = "pwwkew";
         System.out.println(lengthOfLongestSubstring(s2));
     }
@@ -45,4 +46,31 @@ public class longest_substring_without_repeated_chars {
         }
         return maxLen;
     }
+
+    public static String getLongestSubString(String s, int k){
+        int right=0, left=0;
+        int[] freq = new int[128];
+        Set<Character> set = new HashSet<>();
+        int start=0, end=0;
+        while(right<s.length()) {
+            char rightChar = s.charAt(right);
+            set.add(rightChar);
+            freq[rightChar - 'a'] += 1;
+            while (set.size() > k) {
+                char leftChar = s.charAt(left);
+                freq[leftChar - 'a'] -= 1;
+                if (freq[leftChar - 'a'] == 0)
+                    set.remove(leftChar);
+            }
+            left += 1;
+
+            if (end - start < right - left) {
+                end = right;
+                start = left;
+            }
+            right += 1;
+        }
+        return s.substring(start, end+1);
+    }
 }
+

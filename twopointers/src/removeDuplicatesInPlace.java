@@ -12,19 +12,19 @@ import java.util.Arrays;
 public class removeDuplicatesInPlace {
     public static void main(String[] args) {
         int[] nums = new int[]{1,1,2};
-        System.out.println(removeDuplicates(nums));
+
+        System.out.println(Arrays.toString(removeDuplicates(nums)));
+        int[] nums2 = new int[]{0,0,1,1,1,2,2,3,3,4};
+        System.out.println(Arrays.toString(removeDuplicates(nums2)));
     }
-    public static int removeDuplicates(int[] nums){
-        int n = nums.length;
-        int left=0, right=0;
-        while(right < n){
-            if(nums[left] != nums[right]){
-                left += 1; // to avoid overwriting current unique value
+    public static int[] removeDuplicates(int[] nums){
+        int left=1;
+        for(int right=1; right<nums.length; right++){
+            if(nums[right-1] != nums[right]){
                 nums[left] = nums[right];
+                left += 1;
             }
-            right += 1;
         }
-        System.out.println(Arrays.toString(Arrays.copyOfRange(nums, 0, left+1)));
-        return left + 1;
+        return Arrays.copyOfRange(nums, 0, left);
     }
 }

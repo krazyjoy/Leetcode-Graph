@@ -1,7 +1,12 @@
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-
+/*
+    head
+      1   ->   1   ->  2  ->  2   ->   3  -> 3
+                       ^               ^
+      |----------------||--------------| --> null
+ */
 
 public class removeDuplicatesFromLinkedList {
     public static void main(String[] args) {
